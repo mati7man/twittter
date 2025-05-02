@@ -1,70 +1,51 @@
 class TweeetsController < ApplicationController
-  before_action :set_tweeet, only: %i[ show edit update destroy ]
+  before_action :set_tweeet, only: [:show, :update, :destroy]
 
-  # GET /tweeets or /tweeets.json
+  # GET /tweeets
   def index
     @tweeets = Tweeet.all
+    render json: @tweeets
   end
 
-  # GET /tweeets/1 or /tweeets/1.json
+  # GET /tweeets/1
   def show
+    render json: @tweeet
   end
 
-  # GET /tweeets/new
-  def new
-    @tweeet = Tweeet.new
-  end
-
-  # GET /tweeets/1/edit
-  def edit
-  end
-
-  # POST /tweeets or /tweeets.json
+  # POST /tweeets
   def create
     @tweeet = Tweeet.new(tweeet_params)
 
-    respond_to do |format|
-      if @tweeet.save
-        format.html { redirect_to @tweeet, notice: "Tweeet was successfully created." }
-        format.json { render :show, status: :created, location: @tweeet }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @tweeet.errors, status: :unprocessable_entity }
-      end
+    if @tweeet.save
+      render json: @tweeet, status: :created
+    else
+      render json: @tweeet.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /tweeets/1 or /tweeets/1.json
+  # PATCH/PUT /tweeets/1
   def update
-    respond_to do |format|
-      if @tweeet.update(tweeet_params)
-        format.html { redirect_to @tweeet, notice: "Tweeet was successfully updated." }
-        format.json { render :show, status: :ok, location: @tweeet }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @tweeet.errors, status: :unprocessable_entity }
-      end
+    if @tweeet.update(tweeet_params)
+      render json: @tweeet
+    else
+      render json: @tweeet.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /tweeets/1 or /tweeets/1.json
+  # DELETE /tweeets/1
   def destroy
     @tweeet.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to tweeets_path, status: :see_other, notice: "Tweeet was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tweeet
-      @tweeet = Tweeet.find(params.expect(:id))
+      @tweeet = Tweeet.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def tweeet_params
-      params.expect(tweeet: [ :tweeet ])
+      params.require(:tweeet).permit(:tweeet)
     end
 end
