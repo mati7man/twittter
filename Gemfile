@@ -39,7 +39,6 @@ gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-gem 'bulma-rails', '~> 1.0', '>= 1.0.4'
 gem 'simple_form', '~> 5.3', '>= 5.3.1'
 gem 'gravatar_image_tag', '~> 1.2'
 gem 'devise', '~> 4.9', '>= 4.9.4'
@@ -68,3 +67,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "cssbundling-rails", "~> 1.4"
