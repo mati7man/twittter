@@ -1,0 +1,8 @@
+<div style="border: 1px solid #e0e0e0; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+  <p><%= tweet.tweeet %></p>
+  <small>
+    <%= link_to "View", tweet %> |
+    <%= link_to "Edit", edit_tweeet_path(tweet) %> |
+    <%= link_to "Delete", tweet, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  </small>
+</div> 

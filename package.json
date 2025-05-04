@@ -5,6 +5,17 @@
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "dependencies": {
-    "bulma": "^1.0.4"
+    "@emotion/react": "^11.14.0",
+    "@mantine/core": "^7.3.2",
+    "@mantine/form": "^7.3.2",
+    "@mantine/hooks": "^7.3.2",
+    "@mantine/notifications": "^7.3.2",
+    "@mantine/styles": "^6.0.22",
+    "@tabler/icons-react": "^2.42.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.3"
   }
 }

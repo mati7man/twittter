@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>New Tweet</h1>
+  <p>This is a placeholder. You'll build this view with Mantine styling.</p>
+  
+  <%= form_with(model: @tweeet) do |form| %>
+    <div>
+      <%= form.label :tweeet, "Your Tweet:" %>
+      <%= form.text_area :tweeet, rows: 3 %>
+    </div>
+    
+    <div>
+      <%= form.submit "Tweet" %>
+    </div>
+  <% end %>
+  
+  <div>
+    <%= link_to "Back to Tweets", tweeets_path %>
+  </div>
+</div> 

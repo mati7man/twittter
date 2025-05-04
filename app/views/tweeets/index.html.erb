@@ -1,2 +1,12 @@
-<h1>Twitter Clone</h1>
-<p>We'll be building our Twitter clone here from scratch.</p> 
+<div class="container">
+  <h1>Tweets</h1>
+  <p>This is a placeholder. You'll build this view with Mantine styling.</p>
+  
+  <%= link_to "New Tweet", new_tweeet_path %>
+  
+  <div style="margin-top: 20px;">
+    <% @tweeets.each do |tweeet| %>
+      <%= render partial: 'tweet', locals: { tweet: tweeet } %>
+    <% end %>
+  </div>
+</div> 
